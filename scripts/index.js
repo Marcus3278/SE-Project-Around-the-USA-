@@ -25,6 +25,8 @@ const initialCards = [
   },
 ];
 
+console.log(initialCards);
+
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#edit-modal");
 const profileName = document.querySelector(".profile__name");
@@ -35,7 +37,9 @@ const profileDescriptionInput = document.querySelector(
 );
 const editSaveButton = document.querySelector("#edit-save-button");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
+
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#add-card-modal");
@@ -65,6 +69,11 @@ function handleEditProfileSubmit(e) {
   closeModal(profileEditModal);
 }
 
+closeButtons.forEach((button) => {
+  const modal = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(modal));
+});
+
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
@@ -74,15 +83,6 @@ profileEditButton.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleEditProfileSubmit);
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addModalForm.addEventListener("submit", handleAddCardSubmit);
-
-closeButtons.forEach((button) => {
-  button.addEventListener("click", () => closeModal(button.closest(".modal")));
-});
-
-initialCards.forEach((data) => {
-  const cardElement = getCardElement(data);
-  cardListEl.append(cardElement);
-});
 
 function handleAddCardSubmit(e) {
   e.preventDefault();
@@ -95,6 +95,11 @@ function handleAddCardSubmit(e) {
   e.target.reset();
   closeModal(addCardModal);
 }
+
+initialCards.forEach((data) => {
+  const cardElement = getCardElement(data);
+  cardListEl.append(cardElement);
+});
 
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
