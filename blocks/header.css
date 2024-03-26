@@ -1,16 +1,32 @@
 .header {
-  margin-top: 45px;
-  padding-bottom: 41px;
+  max-width: 880px;
+  width: 100%;
+  box-sizing: border-box;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  padding-top: 45px;
+  margin: 0 auto;
 }
 
-@media screen and (max-width: 572px) {
-  .header {
-    margin-top: 28px;
-    padding-bottom: 32px;
+.header__logo {
+  padding: 0 77px 41px 0;
+  height: 33px;
+  width: 173px;
+}
+
+@media screen and (max-width: 880px) {
+  .header__logo {
+    margin-left: 27px;
   }
+}
+
+@media screen and (max-width: 660px) {
+  .header {
+    padding: 28px 0 32px;
+  }
+
   .header__logo {
     width: 126px;
-    margin-left: 27px;
+    height: 24px;
+    padding: 0;
   }
 }
