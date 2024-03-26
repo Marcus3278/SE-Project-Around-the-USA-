@@ -1,68 +1,66 @@
 .card {
-  list-style-type: none;
   display: flex;
   flex-direction: column;
-  border-radius: 10px; 
+  background-color: #ffffff;
+  color: black;
+  width: 282px;
+  border-radius: 10px;
   position: relative;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
-  border-radius: 10px 10px 0 0; 
+  border-radius: 10px 10px 0px 0px;
+  overflow: hidden;
+  object-fit: cover;
 }
 
-.card__delete-btn {
-  background: url(../images/trash.svg);
-  background-color: transparent;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: none;
-  width: 18px; 
-  height: 20px; 
+.card__delete-button {
   position: absolute;
+  background: transparent url(../images/delete-button.svg) center no-repeat;
+  width: 18px;
+  height: 19.3px;
   top: 18px;
   right: 15px;
+  border: none;
 }
-.card__delete-btn:hover {
+
+.card__delete-button:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
-.card__caption {
-  padding: 25px 20px; 
-  background-color: #fff; 
-  color: #000; 
+.card__description {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  padding: 25px 20px;
   justify-content: space-between;
-  border-radius: 0 0 10px 10px; 
+  align-items: center;
 }
 
-.card__name {
-  margin: 0;
-  font-family: "Inter", Arial, sans-serif; 
-  font-weight: 900;
+.card__title {
   font-size: 24px;
-  line-height: 1.2;
+  font-weight: 900;
+  line-height: 29px;
+  letter-spacing: 0;
+  padding: 0;
+  margin: 0;
+  max-width: 220px;
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 219px;
 }
 
 .card__like-button {
-  background: url(../images/like-icon.svg);
-  background-color: transparent;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: transparent url(../images/like-button.svg) center no-repeat;
+  width: 21px;
+  height: 18px;
   border: none;
-  width: 21px; 
-  height: 18px; 
 }
 
-.card__like-button_active {
-  background-image: url(../images/like-active.svg);
+.card__like-button_type_active {
+  background-image: url(../images/filled-like-button.svg);
 }
 
 .card__like-button:hover {
