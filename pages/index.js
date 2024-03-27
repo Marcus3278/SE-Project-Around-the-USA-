@@ -28,16 +28,18 @@ const initialCards = [
   },
 ];
 
-// handle image preview
+
+// Image preview handler
 
 const handleImageClick = (cardData) => {
-  console.log(cardData);
+  console.log(`Previewing card: ${cardData.name}`);
   previewImageElement.src = cardData.link;
   previewImageElement.alt = cardData.name;
   previewImageElementName.textContent = cardData.name;
   openModal(previewImageModal);
 };
 
+// Form configuration
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -47,14 +49,14 @@ const config = {
   errorClass: "modal__error_visible",
 };
 
-// Initialize form validation for each form element
+// Initialize form validation
 const forms = document.querySelectorAll(config.formSelector);
 forms.forEach((form) => {
-  const validator = new FormValidator(config, form);
-  validator.enableValidation();
+  const formValidator = new FormValidator(config, form);
+  formValidator.enableValidation();
 });
 
-// DOM elements
+// Modal and form elements
 const editButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-modal");
 const profileTitle = document.querySelector(".profile__title");
@@ -82,7 +84,7 @@ const previewImageElementName = previewImageModal.querySelector(
   ".modal__image-title"
 );
 
-// Modal functions
+// Modal control functions
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("click", clickOutsideHandler);
@@ -108,7 +110,7 @@ function escapeKeyHandler(evt) {
   }
 }
 
-// Form submission handlers
+// Profile and card form submission handlers
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = inputTitle.value;
@@ -125,7 +127,7 @@ function handleAddCardFormSubmit(evt) {
   addCardForm.reset();
 }
 
-// Event listeners for forms and buttons
+// Event listeners for forms and modals
 editButton.addEventListener("click", () => {
   inputTitle.value = profileTitle.textContent;
   inputSubtitle.value = profileSubtitle.textContent;
@@ -141,9 +143,12 @@ closePreviewButton.addEventListener("click", () => {
   closeModal(previewImageModal);
 });
 
+// Add new card button listener
 addButton.addEventListener("click", () => {
   openModal(addCardModal);
 });
+
+// Close add form button listener
 closeAddFormButton.addEventListener("click", () => {
   closeModal(addCardModal);
 });
@@ -160,8 +165,7 @@ initialCards.forEach((cardData) => {
 });
 
 function renderCard(cardData) {
-  console.log(2);
-  console.log(cardData)
+  console.log(`Rendering new card: ${cardData.name}`);
   const card = createCard(cardData);
   cardList.prepend(card);
 }

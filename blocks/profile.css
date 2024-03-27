@@ -14,66 +14,61 @@
 
 .profile__info {
   display: grid;
-  grid-template-areas: 
-    "title button"
-    "subtitle subtitle";
+  grid-template-areas: "title button" "subtitle subtitle";
   grid-template-columns: minmax(auto, 375px) auto;
   align-items: baseline;
-  column-gap: 18px;
-}
-
-.profile__title,
-.profile__subtitle {
-  color: #ffffff;
-  margin: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  grid-column-gap: 18px;
 }
 
 .profile__title {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
+  color: #ffffff;
+  margin: 0;
   grid-area: title;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
-  background: url('../images/edit-button.svg') center no-repeat;
-  border: 1px solid #ffffff;
+  background: transparent url(../images/edit-button.svg) center no-repeat;
   width: 24px;
   height: 24px;
   grid-area: button;
-  opacity: 1;
-  transition: opacity 0.3s;
-  cursor: pointer;
+  border: 1px solid #ffffff;
 }
 
 .profile__edit-button:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 .profile__subtitle {
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
+  color: #ffffff;
+  margin: 0;
   grid-area: subtitle;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__add-button {
-  background: url('../images/add-button.svg') center no-repeat;
-  border: 2px solid #ffffff;
-  border-radius: 2px;
+  background: transparent url(../images/add-button.svg) center no-repeat;
   width: 150px;
   height: 50px;
   margin-left: auto;
-  opacity: 1;
-  transition: opacity 0.3s;
-  cursor: pointer;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 836px) {
@@ -91,18 +86,20 @@
     flex-direction: column;
     justify-content: center;
     padding-top: 42px;
-    gap: 30px;
+    row-gap: 30px;
   }
 
   .profile__avatar {
-    margin: 0 auto; 
+    margin: 0;
   }
 
   .profile__info {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    row-gap: 14px;
     padding: 0;
-    gap: 14px;
   }
 
   .profile__title {
@@ -119,11 +116,17 @@
   .profile__subtitle {
     font-size: 14px;
     line-height: 17px;
+    letter-spacing: 0;
     text-align: center;
+    width: 100%;
   }
 
   .profile__add-button {
-    width: 282px; 
+    width: 282px;
     margin: 0;
+  }
+
+  .profile__add-button:hover {
+    width: 282px;
   }
 }
